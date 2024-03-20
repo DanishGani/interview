@@ -1,0 +1,44 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'opostech.khataData'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'redis.clients:jedis'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+	compile group: 'joda-time', name: 'joda-time', version: '2.10.6'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	compile group: 'io.swagger.core.v3', name: 'swagger-core', version: '2.1.5'
+	compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '3.0.0'
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.3'
+	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-joda', version: '2.9.6'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+test {
+	useJUnitPlatform()
+}
